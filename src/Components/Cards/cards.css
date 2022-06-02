@@ -1,0 +1,92 @@
+.homepage-chips {
+    padding-left: 2rem;
+    gap: 1rem;
+    font-size: 1.4rem;
+    align-items: center;
+    display: flex;
+    grid-area: chips;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--nav-bg);
+  }
+  
+  .catergory-cards {
+    display: grid;
+    height: max-content;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    grid-area: category;
+    
+  }
+  
+  .must-watch {
+    grid-area: mustwatch;
+  }
+  
+  .card img:hover {
+    box-shadow: -5px 5px #9147ff;
+    transition: all 0.3s ease;
+    transform: translate(5px, -5px);
+  }
+  
+  .category-img {
+    width: 18rem;
+    height: 24rem;
+  }
+  
+  .card {
+    width: 18rem;
+  }
+  
+  .video-card-container {
+    font-size: 1.4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27.25rem, 1fr));
+    gap: 3rem;
+  }
+  
+  .video-card {
+    width: 27.25rem;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* .category-cards img {
+      width: 8rem;
+  } */
+  
+  .chips {
+    height: 32px;
+    min-width: 12px;
+    padding: 0 10px;
+    display: flex;
+    border-radius: 1.6rem;
+    border: 1px solid #424242;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #373737;
+    cursor: pointer;
+  }
+  
+  .home-container {
+    padding: 2rem;
+    display: grid;
+    row-gap: 2rem;
+    grid-area: main;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "category"
+      "mustwatch";
+  }
+
+  .video-card-desc{
+    padding: 1rem 0;
+    align-items: center;
+  }
+
+  .flex1{
+    flex-basis: 97%;
+  }
+
+  
+  
