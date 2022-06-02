@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --page-bg: hsl(0deg 0% 9%);
+  --nav-bg: #202020;
+  --border-color : #343434;
+  --hover-graybg : rgb(56 56 56);
+}
+
+.flex_r{
+  display: flex;
+}
+
+.flex_c{
+  display: flex;
+  flex-direction: column;
+}

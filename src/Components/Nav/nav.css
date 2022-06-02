@@ -1,0 +1,13 @@
+.avatar {
+    width: 4.125rem;
+    height: 4.125rem;
+  }
+  
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    grid-area: nav;
+    background-color: var(--nav-bg);
+  }
