@@ -12,6 +12,9 @@ html {
   --nav-bg: #202020;
   --border-color : #343434;
   --hover-graybg : rgb(56 56 56);
+  --cards-transition-bg : #848484;
+  --chips-bg : #373737 ;
+  --chips-border : #424242;
 }
 
 .flex_r{
