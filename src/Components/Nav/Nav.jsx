@@ -4,7 +4,7 @@ import "../../Utils/styles.css"
 export default function Nav(){
     return (
         <nav class="nav-bar">
-        <p>Baby Tunes</p>
+        <p className="nav-title">Baby Tunes</p>
         <img
           class="avatar"
           src="https://endlessui.netlify.app/Images/avatar3.png"

@@ -12,7 +12,7 @@ export default function Landingpage() {
             <CategoryCard />
           </div>
           <div class="must-watch">
-            <p className="flex_r">Must Watch Videos</p>
+            <p className="must-watch flex_r">Must Watch Videos</p>
             <div class="video-card-container">
               <MustWatchCards />
             </div>

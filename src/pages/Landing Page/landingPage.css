@@ -16,17 +16,19 @@
   .home-page-wrapper {
     font-size: 2rem;
     font-family: "Roboto", sans-serif;
-    color: hsl(0deg 0% 96%);
+    color: var(--white-textcolor);
     display: grid;
     grid-template-columns: 17rem 1fr;
     grid-template-rows: 5rem 5.4rem 1fr 3rem;
     width: 100%;
     height: 100vh;
-    /* row-gap: 0.5rem; */
-    /* column-gap: 0.5rem; */
     grid-template-areas:
       "nav nav nav"
       "sidebar main main"
       "sidebar main main"
       "sidebar footer footer";
+  }
+
+  .must-watch{
+    font-weight: 700;
   }

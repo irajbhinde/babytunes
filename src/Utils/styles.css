@@ -10,18 +10,19 @@ html {
 :root {
   --page-bg: hsl(0deg 0% 9%);
   --nav-bg: #202020;
-  --border-color : #343434;
-  --hover-graybg : rgb(56 56 56);
-  --cards-transition-bg : #848484;
-  --chips-bg : #373737 ;
-  --chips-border : #424242;
+  --border-color: #343434;
+  --hover-graybg: rgb(56 56 56);
+  --cards-transition-bg: #848484;
+  --chips-bg: #373737;
+  --chips-border: #424242;
+  --white-textcolor: hsl(0deg 0% 96%);
 }
 
-.flex_r{
+.flex_r {
   display: flex;
 }
 
-.flex_c{
+.flex_c {
   display: flex;
   flex-direction: column;
 }
