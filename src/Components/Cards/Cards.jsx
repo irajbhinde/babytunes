@@ -40,3 +40,16 @@ export const MustWatchCards = () => {
     </>
   );
 };
+
+export const VideoListingCard = ({video}) => {
+  const {_id, title } = video;
+  return(
+    <div className="videolisting-cards">
+      <img className="videolisting_img" src="https://i.ytimg.com/vi/f013dR_y7DI/hqdefault.jpg?s…RUAAIhCGAE=&rs=AOn4CLCmmUMogcnMu2KFfSuEnC-AN0plmw" alt="error" />
+      <span className="videolisting-content">
+        <p className="flex_r flex1">{title}</p>
+        <i className="fa-solid fa-xl fa-ellipsis-vertical kebab-menu"></i>
+      </span>
+    </div>
+  )
+}

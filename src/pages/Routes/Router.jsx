@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Landingpage from "../Landing Page/Landingpage";
+import {Landingpage, VideoListingPage} from "../index"
 
 export default function Router(){
     return(
         <Routes>
             <Route path="/" element={ <Landingpage />} />
+            <Route path="/videolisting" element={<VideoListingPage />} />
         </Routes>
     )
 }

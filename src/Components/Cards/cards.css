@@ -33,6 +33,7 @@
 }
 
 .card {
+  font-size: 2rem;
   width: 18rem;
   cursor: pointer;
 }
@@ -53,9 +54,9 @@
 }
 
 .chips {
-  height: 32px;
-  min-width: 12px;
-  padding: 0 10px;
+  height: 3.2rem;
+  min-width: 1.2rem;
+  padding: 0 1rem;
   display: flex;
   border-radius: 1.6rem;
   border: 1px solid var(--chips-border);
@@ -83,4 +84,23 @@
 
 .flex1 {
   flex-basis: 97%;
+}
+
+.videolisting-cards {
+  width: 29rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.videolisting-content{
+  font-size: 1.6rem ;
+  padding-top: 1rem;
+  display: flex;
+}
+
+.kebab-menu{
+  display: flex;
+  align-items: center;
 }

@@ -1,0 +1,26 @@
+.video-listing {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.videolisting-container {
+  grid-area: video-main;
+  padding-left: 4rem ;
+}
+
+.videolisting-page-wrapper {
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  color: var(--white-textcolor);
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  grid-template-rows: 5.6rem 5.6rem 1fr;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas:
+    "nav nav nav"
+    "sidebar chips chips"
+    "sidebar video-main video-main"
+    "sidebar video-main video-main";
+}
