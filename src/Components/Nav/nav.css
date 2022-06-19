@@ -1,17 +1,23 @@
 .nav-title {
+  font-size: 2rem;
+  margin-left: 1rem;
   cursor: pointer;
 }
 
 .avatar {
+  margin-right: 2rem;
   width: 4.125rem;
   height: 4.125rem;
   cursor: pointer;
 }
 
 .nav-bar {
+  position: fixed;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 5.6rem;
   padding: 0 1rem;
   grid-area: nav;
   background-color: var(--nav-bg);
