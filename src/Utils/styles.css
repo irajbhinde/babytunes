@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+a{
+  text-decoration: none;
+  color: var(--white-textcolor);
+}
+
 html {
   font-size: 62.5%;
 }
