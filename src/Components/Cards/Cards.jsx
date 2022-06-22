@@ -3,19 +3,18 @@ import "../../Utils/styles.css";
 import { categories } from "../../backend/db/categories";
 import { Link } from "react-router-dom";
 
-export const CategoryCard = () => {
+export const CategoryCard = ({ navigationByCategory }) => {
   return (
     <>
       {categories.map(
         ({ categoryName, image, bottom }) =>
           !bottom && (
-            <div class="card">
-              <Link to="/videolisting">
-              <img class="category-img" src={image} alt="error" />
-              <p>{categoryName}</p>
-              </Link>
-             
-            </div>
+            <Link to="/videolisting">
+              <div onClick={() => navigationByCategory(categoryName)} class="card">
+                <img class="category-img" src={image} alt="error" />
+                <p>{categoryName}</p>
+              </div>
+            </Link>
           )
       )}
     </>

@@ -17,7 +17,7 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "TV Shows",
+    categoryName: "TV_Shows",
     description:
       "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
     image : tv_shows,
