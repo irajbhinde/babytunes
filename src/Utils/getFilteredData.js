@@ -1,5 +1,4 @@
 const getFilteredData = (videoList, categories) => {
-  console.log("cat", categories);
   if (Object.values(categories).every((categories) => categories === false)) {
     return videoList;
   }

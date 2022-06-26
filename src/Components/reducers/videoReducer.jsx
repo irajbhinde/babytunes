@@ -30,7 +30,7 @@ export const videoReducer = (state, action) => {
         ...state,
         categories: {
           ...state.categories,
-          Cartoon: !state.categories.Learning,
+          Cartoon: !state.categories.Cartoon,
         },
       };
     case "SPORTS":
@@ -38,7 +38,18 @@ export const videoReducer = (state, action) => {
         ...state,
         categories: {
           ...state.categories,
-          Sports: !state.categories.Learning,
+          Sports: !state.categories.Sports,
+        },
+      };
+    case "CLEAR_ALL":
+      return {
+        ...state,
+        categories: {
+          Music: false,
+          TV_Shows: false,
+          Learning: false,
+          Cartoon: false,
+          Sports: false,
         },
       };
     default:

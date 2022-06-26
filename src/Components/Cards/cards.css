@@ -92,15 +92,42 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  position: relative;
 }
 
-.videolisting-content{
-  font-size: 1.6rem ;
+.videolisting-content {
+  font-size: 1.6rem;
   padding-top: 1rem;
   display: flex;
 }
 
-.kebab-menu{
+.kebab-menu {
   display: flex;
   align-items: center;
+}
+
+.modal {
+  font-size: 1.6rem;
+  position: absolute;
+  right: 0rem;
+  top: 105%;
+  z-index: 2;
+  color: white;
+  width: 26rem;
+  height: max-content;
+  background-color: #202020;
+}
+
+.modal div {
+  background-color: #202020;
+  cursor: pointer;
+  font-size: 1.6rem;
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1rem;
+}
+
+.modal div:hover {
+  background-color: var(--hover-graybg);
 }
