@@ -13,78 +13,47 @@ export const categories = [
     description:
       "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
     image: music,
-    bottom : false
+    bottom: false,
   },
   {
     _id: uuid(),
-    categoryName: "TV_Shows",
+    categoryName: "TV Shows",
     description:
       "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
-    image : tv_shows,
-    bottom : false
+    image: tv_shows,
+    bottom: false,
   },
-  {
-    _id: uuid(),
-    categoryName: "Explore",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
-    image : explore,
-    bottom : false
-  },
+
   {
     _id: uuid(),
     categoryName: "Learning",
     description:
       "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
-    image : idea,
-    bottom : false
+    image: idea,
+    bottom: false,
   },
   {
     _id: uuid(),
     categoryName: "Cartoon",
     description:
       "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
-    image : cartoon,
-    bottom : false
+    image: cartoon,
+    bottom: false,
   },
   {
     _id: uuid(),
     categoryName: "Sports",
     description:
       "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
-    image : sports,
-    bottom : false
+    image: sports,
+    bottom: false,
   },
   {
     _id: uuid(),
-    categoryName: "Sports",
+    categoryName: "Explore All",
     description:
       "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
-    image : sports,
-    bottom : true
+    image: explore,
+    bottom: false,
   },
-  {
-    _id: uuid(),
-    categoryName: "Sports",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
-    image : sports,
-    bottom : true
-  },
-  {
-    _id: uuid(),
-    categoryName: "Sports",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
-    image : sports,
-    bottom : true
-  },
-  {
-    _id: uuid(),
-    categoryName: "Sports",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
-    image : sports,
-    bottom : true
-  }
 ];
