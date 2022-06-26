@@ -1,0 +1,16 @@
+.homepage-chips {
+  padding: 1rem 0;
+  padding-left: 2rem;
+  gap: 1rem;
+  font-size: 1.4rem;
+  align-items: center;
+  display: flex;
+  left: 20rem;
+  grid-area: chips;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--nav-bg);
+  position: fixed;
+  width: 100vw;
+  top: 5.6rem;
+}
