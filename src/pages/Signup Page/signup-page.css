@@ -1,0 +1,52 @@
+.signup-container {
+  grid-area: signup-container;
+}
+
+.signup-page-wrapper {
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  color: var(--white-textcolor);
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  grid-template-rows: 5.6rem 5.6rem 1fr;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas:
+    "nav nav nav"
+    "sidebar chips chips"
+    "sidebar signup-container signup-container"
+    "sidebar signup-container signup-container";
+}
+
+.signup-container {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  color: var(--login-purple);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 64rem;
+  height: 56rem;
+  margin: 0 auto;
+  background-color: var(--nav-bg);
+  border: 1px solid var(--login-purple);
+  border-radius: 5px;
+  gap: 2rem;
+}
+
+.signup-title{
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.signup-password, .signup-cnfPassword{
+    position: relative;
+}
+
+.signup-pass-icon{
+    position: absolute;
+    top: 3.4rem;
+    right: 1rem;
+}
+
+

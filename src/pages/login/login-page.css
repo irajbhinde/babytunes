@@ -38,7 +38,7 @@
     align-items: center;
     width: 64rem;
     height: 48rem;
-    margin: auto;
+    margin: 0 auto;
     background-color: var(--nav-bg);
     border: 1px solid var(--login-purple);
     border-radius: 5px;
@@ -67,7 +67,7 @@ input{
     outline: none;
 }
 
-input[type = "text"]:focus,input[type = "password"]:focus {
+input[type = "text"]:focus,input[type = "password"]:focus, input[type = "email"]:focus {
     outline: 2px solid var(--login-purple);
   }
 
@@ -95,3 +95,6 @@ button{
     background-color: #908988;
 }
 
+.input-password{
+    position: relative;
+}
