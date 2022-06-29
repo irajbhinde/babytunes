@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "dayjs": "^1.11.2",
+    "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
     "jwt-encode": "^1.0.1",
     "miragejs": "^0.1.44",
