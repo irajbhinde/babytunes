@@ -20,7 +20,6 @@
 
 .signup-container {
   font-size: 1.6rem;
-  margin-top: 2rem;
   color: var(--login-purple);
   display: flex;
   flex-direction: column;
@@ -31,22 +30,39 @@
   background-color: var(--nav-bg);
   border: 1px solid var(--login-purple);
   border-radius: 5px;
+}
+
+.signup-title {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.signup-password,
+.signup-cnfPassword {
+  position: relative;
+}
+
+.signup-pass-icon {
+  position: absolute;
+  top: 3.4rem;
+  right: 1rem;
+}
+
+.btn-createAccount {
+  margin-top: 1rem;
+  color: var(--nav-bg);
+  font-size: 1.8rem;
+  background-color: var(--login-purple);
+  width: 37rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.form-container {
   gap: 2rem;
 }
 
-.signup-title{
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+button[disabled=disabled], button:disabled {
+  background-color: #ede4fa;
+  cursor: not-allowed;
 }
-
-.signup-password, .signup-cnfPassword{
-    position: relative;
-}
-
-.signup-pass-icon{
-    position: absolute;
-    top: 3.4rem;
-    right: 1rem;
-}
-
-

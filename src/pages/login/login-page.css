@@ -82,7 +82,7 @@ label p {
    height: 2.5rem;
 }
 
-button{
+.login-btn, .btn-guestLogin{
     color: var(--nav-bg);
     font-size: 1.8rem;
     background-color: var(--login-purple);
