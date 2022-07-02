@@ -1,8 +1,14 @@
 import "./cards.css";
 import "../../Utils/styles.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useVideo } from "../context/video-context";
+import { useAuth } from "../context/auth-context";
+import { useFeatures } from "../context/page-features-context";
+import {
+  addToWatchLater,
+  deleteFromWatchLater,
+} from "../../Utils/videoPage-functions";
 
 export const CategoryCard = ({ navigationByCategory, category }) => {
   const { categoryName, _id, image } = category;
@@ -72,6 +78,11 @@ export const MustWatchCards = ({ video }) => {
 };
 
 export const VideoListingCard = ({ video }) => {
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+  const { authToken, authStatus } = auth;
+  const { featureState, featureDispatch } = useFeatures();
+  const { watchLaterVideos } = featureState;
   const { modal, setModal } = useVideo();
   const { _id, title } = video;
   const [modalActive, setModalActive] = useState(false);
@@ -95,7 +106,14 @@ export const VideoListingCard = ({ video }) => {
       {modalActive && (
         <div className="modal flex_c">
           <div
-            onClick={() => setWatchLater(!watchLater)}
+            onClick={() => {
+              setWatchLater(!watchLater);
+              watchLater
+                ? deleteFromWatchLater(video, featureDispatch, authToken)
+                : authStatus
+                ? addToWatchLater(video, featureDispatch, authToken)
+                : navigate("/login");
+            }}
             className="modalTextOne flex_r"
           >
             <i
