@@ -33,13 +33,6 @@ export default function VideoListingPage() {
   return (
     <>
       <div className="videolisting-page-wrapper">
-        {modal && (
-          <>
-            <div className="playlist-overlay">
-              <PlayListModal />
-            </div>
-          </>
-        )}
         <Nav />
         <Sidebar />
         <Chips />

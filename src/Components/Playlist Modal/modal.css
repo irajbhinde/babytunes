@@ -35,8 +35,9 @@
   color: var(--white-textcolor);
 }
 
-.modal-footer input:hover {
+textarea:focus, input:focus{
   outline: none;
+  border: none;
 }
 
 .fa-xmark {
@@ -49,4 +50,17 @@
   background-color: var(--page-bg);
   padding-right: 0.5rem;
   cursor: pointer;
+}
+
+.listOfPlaylist-container{
+  gap: 1rem;
+}
+
+.playlist-checkbox{
+  width: 1rem;
+  height: 1rem;
+}
+
+.modal-content{
+  gap: 2rem;
 }
