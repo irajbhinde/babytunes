@@ -23,10 +23,12 @@ export default function Sidebar() {
         <i className="fa-solid fa-clock-rotate-left fa-lg"></i>
         <span>History</span>
       </div>
+      <Link to="/watchlater">
       <div>
         <i className="fa-regular fa-clock fa-lg"></i>
         <span>Watch Later</span>
       </div>
+      </Link>
     </aside>
   );
 }
