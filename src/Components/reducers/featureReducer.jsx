@@ -25,6 +25,12 @@ export const featureReducer = (state, action) => {
           ...state.watchLaterVideos.filter((vid) => vid._id !== payload._id),
         ],
       };
+
+    case "ADD_TO_PLAYLIST" :
+      return{
+        ...state,
+        playlistVideos : payload 
+      }
     default:
       return state;
   }

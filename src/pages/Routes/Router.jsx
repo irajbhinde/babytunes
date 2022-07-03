@@ -1,6 +1,6 @@
 import MockmanEs from "mockman-js";
 import { Routes, Route } from "react-router-dom";
-import {Landingpage, VideoListingPage, LoginPage, WatchLaterVideos} from "../index"
+import {Landingpage, VideoListingPage, LoginPage, WatchLaterVideos, PlaylistPage} from "../index"
 import SignupPage from "../Signup Page/SignupPage";
 
 export default function Router(){
@@ -12,6 +12,7 @@ export default function Router(){
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/mockman" element={<MockmanEs />} />
             <Route path="/watchlater" element={<WatchLaterVideos />} />
+            <Route path="/playlist" element={<PlaylistPage />} />
         </Routes>
     )
 }

@@ -15,19 +15,21 @@ export default function Sidebar() {
         <i className="fa-solid fa-heart fa-lg"></i>
         <span>Liked Videos</span>
       </div>
-      <div>
-        <i className="fa-solid fa-list-check fa-lg"></i>
-        <span>Playlist</span>
-      </div>
+      <Link to="/playlist">
+        <div>
+          <i className="fa-solid fa-list-check fa-lg"></i>
+          <span>Playlist</span>
+        </div>
+      </Link>
       <div>
         <i className="fa-solid fa-clock-rotate-left fa-lg"></i>
         <span>History</span>
       </div>
       <Link to="/watchlater">
-      <div>
-        <i className="fa-regular fa-clock fa-lg"></i>
-        <span>Watch Later</span>
-      </div>
+        <div>
+          <i className="fa-regular fa-clock fa-lg"></i>
+          <span>Watch Later</span>
+        </div>
       </Link>
     </aside>
   );

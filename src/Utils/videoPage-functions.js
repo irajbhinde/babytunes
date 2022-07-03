@@ -62,9 +62,28 @@ const deleteFromWatchLater = async (video, featureDispatch, authToken) => {
   }
 };
 
+const addToPlaylist = async (playlistTitle, featureDispatch, authToken) => {
+  try{
+    const response = await axios.post(`/api/user/playlists`, {
+      playlist : {title : playlistTitle}
+    },{
+      headers : {
+        authorization : authToken,
+      }
+    }
+    );
+    featureDispatch({type: "ADD_TO_PLAYLIST", payload : response.data.playlists})
+    console.log(response);
+  }
+  catch(error){
+    console.log(error);
+  }
+}
+
 export {
   addToLikedVideos,
   deleteFromLikedVideos,
   addToWatchLater,
   deleteFromWatchLater,
+  addToPlaylist
 };
