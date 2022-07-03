@@ -2,13 +2,12 @@ import "./cards.css";
 import "../../Utils/styles.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useVideo } from "../context/video-context";
-import { useAuth } from "../context/auth-context";
-import { useFeatures } from "../context/page-features-context";
+import { useVideo, useAuth, useFeatures } from "../context/index";
 import {
   addToWatchLater,
   deleteFromWatchLater,
 } from "../../Utils/videoPage-functions";
+import { PlayListModal } from "../index";
 
 export const CategoryCard = ({ navigationByCategory, category }) => {
   const { categoryName, _id, image } = category;
@@ -87,61 +86,95 @@ export const VideoListingCard = ({ video }) => {
   const { _id, title } = video;
   const [modalActive, setModalActive] = useState(false);
   return (
-    <div key={video._id} className="videolisting-cards">
-      <img
-        className="videolisting_img"
-        src="https://i.ytimg.com/vi/f013dR_y7DI/hqdefault.jpg?s…RUAAIhCGAE=&rs=AOn4CLCmmUMogcnMu2KFfSuEnC-AN0plmw"
-        alt="error"
-      />
-      <span className="videolisting-content">
-        <p className="flex_r flex1">{title}</p>
-        <i
-          onClick={() => {
-            modalActive ? setModalActive(false) : setModalActive(true);
-          }}
-          className="fa-solid fa-xl fa-ellipsis-vertical kebab-menu"
-        ></i>
-      </span>
-      {modalActive && (
-        <div className="modal flex_c">
-          {watchLaterVideos.find((vid) => vid._id === video._id) ? (
-            <>
-              <div
-                onClick={() =>
-                  deleteFromWatchLater(video, featureDispatch, authToken)
-                }
-                className="modalTextOne flex_r"
-              >
-                <i
-                  style={{ color: "var(--crimson-red)" }}
-                  className="fa-regular fa-clock fa-sm"
-                ></i>
-                <p style={{ color: "var(--crimson-red)" }}>
-                  Remove from Watch Later
-                </p>
-              </div>
-            </>
-          ) : (
-            <>
-              <div
-                onClick={() => {
-                  authStatus
-                    ? addToWatchLater(video, featureDispatch, authToken)
-                    : navigate("/login");
-                }}
-                className="modalTextOne flex_r"
-              >
-                <i className="fa-regular fa-clock fa-sm"></i>
-                <p>Add to Watch Later</p>
-              </div>
-            </>
-          )}
-          <div onClick={() => setModal(!modal)} className="modalTextTwo flex_r">
-            <i className="fa-solid fa-list-check fa-sm"></i>
-            <p>Add to Playlist</p>
+    <>
+      <div key={video._id} className="videolisting-cards">
+        <img
+          className="videolisting_img"
+          src="https://i.ytimg.com/vi/f013dR_y7DI/hqdefault.jpg?s…RUAAIhCGAE=&rs=AOn4CLCmmUMogcnMu2KFfSuEnC-AN0plmw"
+          alt="error"
+        />
+        <span className="videolisting-content">
+          <p className="flex_r flex1">{title}</p>
+          <i
+            onClick={() => {
+              modalActive ? setModalActive(false) : setModalActive(true);
+            }}
+            className="fa-solid fa-xl fa-ellipsis-vertical kebab-menu"
+          ></i>
+        </span>
+        {modalActive && (
+          <div className="modal flex_c">
+            {watchLaterVideos.find((vid) => vid._id === video._id) ? (
+              <>
+                <div
+                  onClick={() =>
+                    deleteFromWatchLater(video, featureDispatch, authToken)
+                  }
+                  className="modalTextOne flex_r"
+                >
+                  <i
+                    style={{ color: "var(--crimson-red)" }}
+                    className="fa-regular fa-clock fa-sm"
+                  ></i>
+                  <p style={{ color: "var(--crimson-red)" }}>
+                    Remove from Watch Later
+                  </p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div
+                  onClick={() => {
+                    authStatus
+                      ? addToWatchLater(video, featureDispatch, authToken)
+                      : navigate("/login");
+                  }}
+                  className="modalTextOne flex_r"
+                >
+                  <i className="fa-regular fa-clock fa-sm"></i>
+                  <p>Add to Watch Later</p>
+                </div>
+              </>
+            )}
+            <div
+              onClick={() => setModal(!modal)}
+              className="modalTextTwo flex_r"
+            >
+              <i className="fa-solid fa-list-check fa-sm"></i>
+              <p>Add to Playlist</p>
+            </div>
           </div>
+        )}
+        {modal && (
+          <>
+            <div className="playlist-overlay">
+              <PlayListModal key={video._id} />
+            </div>
+          </>
+        )}
+      </div>
+    </>
+  );
+};
+
+export const PlaylistCard = () => {
+  const { featureState, featureDispatch } = useFeatures();
+  const { playlistVideos } = featureState;
+  return (
+    <>
+      {playlistVideos.map((playlistName) => (
+        <div className="playlist-card">
+          <div className="deletePlaylist">
+            <i class="fa-solid fa-trash"></i>
+          </div>
+          <div className="playlist-card-overlay">
+            <i class="fa-solid fa-play"></i>
+          </div>
+          <footer className="playlist-card-footer">
+            <p>{playlistName.title}</p>
+          </footer>
         </div>
-      )}
-    </div>
+      ))}
+    </>
   );
 };

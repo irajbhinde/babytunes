@@ -131,3 +131,53 @@
 .modal div:hover {
   background-color: var(--hover-graybg);
 }
+
+.playlist-card {
+  position: relative;
+  margin-top: 2rem;
+  width: 30rem;
+  height: 17.2rem;
+  background-color: var(--nav-bg);
+}
+
+.playlist-card-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--hover-graybg);
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlist-card-footer {
+  gap: 1rem;
+  width: 75%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-content {
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+  gap: 2rem;
+}
+
+.deletePlaylist {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 11%;
+  height: 95%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: var(--crimson-red);
+}
