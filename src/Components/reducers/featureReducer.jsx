@@ -31,6 +31,11 @@ export const featureReducer = (state, action) => {
         ...state,
         playlistVideos : payload 
       }
+    case "DELETE_PLAYLIST":
+      return{
+        ...state,
+        playlistVideos : [...state.playlistVideos.filter((playlist) => playlist._id !== payload._id)]
+      }
     default:
       return state;
   }

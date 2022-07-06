@@ -6,6 +6,7 @@ import { useVideo, useAuth, useFeatures } from "../context/index";
 import {
   addToWatchLater,
   deleteFromWatchLater,
+  deleteFromPlaylist,
 } from "../../Utils/videoPage-functions";
 import { PlayListModal } from "../index";
 
@@ -159,13 +160,20 @@ export const VideoListingCard = ({ video }) => {
 
 export const PlaylistCard = () => {
   const { featureState, featureDispatch } = useFeatures();
+  const { auth } = useAuth();
+  const { authStatus, authToken } = auth;
   const { playlistVideos } = featureState;
   return (
     <>
       {playlistVideos.map((playlistName) => (
         <div className="playlist-card">
           <div className="deletePlaylist">
-            <i class="fa-solid fa-trash"></i>
+            <i
+              onClick={() =>
+                deleteFromPlaylist(playlistName, featureDispatch, authToken)
+              }
+              class="fa-solid fa-trash cursor-pointer"
+            ></i>
           </div>
           <div className="playlist-card-overlay">
             <i class="fa-solid fa-play"></i>

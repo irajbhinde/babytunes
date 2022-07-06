@@ -28,7 +28,7 @@ export default function PlaylistPage() {
         ) : (
           <div>
             <div className="playlist">
-              <PlaylistCard />
+              <PlaylistCard key={playlistVideos._id} />
             </div>
           </div>
         )}

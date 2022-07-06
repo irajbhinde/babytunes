@@ -80,10 +80,26 @@ const addToPlaylist = async (playlistTitle, featureDispatch, authToken) => {
   }
 }
 
+const deleteFromPlaylist = async(playlistTitle, featureDispatch, authToken) => {
+  try {
+    const response = await axios.delete(`api/user/playlists/${playlistTitle._id}`,{
+      headers : {
+        authorization : authToken
+      }
+    })
+    featureDispatch({type : "DELETE_PLAYLIST", payload : playlistTitle})
+  }
+  catch(error){
+    console.log(error);
+  }
+  
+}
+
 export {
   addToLikedVideos,
   deleteFromLikedVideos,
   addToWatchLater,
   deleteFromWatchLater,
-  addToPlaylist
+  addToPlaylist,
+  deleteFromPlaylist
 };
