@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 export default function PlaylistPage() {
   const { featureState, featureDispatch } = useFeatures();
-  const { playlistVideos } = featureState;
+  const { playlist } = featureState;
   const navigate = useNavigate();
   return (
     <div className="playlistPage-wrapper">
       <Nav />
       <Sidebar />
       <div className="playlist-container">
-        {playlistVideos.length === 0 ? (
+        {playlist.length === 0 ? (
           <div className="center-container flex_c">
             <div className="empty-list-msg">Your Playlist is Empty</div>
             <button
@@ -28,7 +28,7 @@ export default function PlaylistPage() {
         ) : (
           <div>
             <div className="playlist">
-              <PlaylistCard key={playlistVideos._id} />
+              <PlaylistCard key={playlist._id} />
             </div>
           </div>
         )}

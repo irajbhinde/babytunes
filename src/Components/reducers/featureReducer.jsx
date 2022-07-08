@@ -25,17 +25,43 @@ export const featureReducer = (state, action) => {
           ...state.watchLaterVideos.filter((vid) => vid._id !== payload._id),
         ],
       };
+    case "MODIFY_PLAYLIST":
+      return {
+        ...state,
+        playlist: state.playlist.map((item) =>
+          item._id === payload._id ? payload : item
+        ),
+      };
 
-    case "ADD_TO_PLAYLIST" :
-      return{
+    case "ADD_TO_PLAYLIST":
+      return {
         ...state,
-        playlistVideos : payload 
-      }
+        playlist: payload,
+      };
     case "DELETE_PLAYLIST":
-      return{
+      return {
         ...state,
-        playlistVideos : [...state.playlistVideos.filter((playlist) => playlist._id !== payload._id)]
-      }
+        playlist: [
+          ...state.playlist.filter((list) => list._id !== payload._id),
+        ],
+      };
+    // case "ADD_VIDEO_TO_PLAYLIST":
+    //   return {
+    //     ...state,
+    //     playlist: [payload],
+    //   };
+    // case "DELETE_VIDEO_FROM_PLAYLIST":
+    //   return {
+    //     ...state,
+    //     playlist: [
+    //       ...state.playlist.filter((vid) => vid._id !== payload._id),
+    //     ],
+    //   };
+    case "SET_VIDEO":
+      return {
+        ...state,
+        currentVideo: payload,
+      };
     default:
       return state;
   }

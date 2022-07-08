@@ -31,6 +31,8 @@ export const CategoryCard = ({ navigationByCategory, category }) => {
 export const MustWatchCards = ({ video }) => {
   const { modal, setModal } = useVideo();
   const { _id, title } = video;
+  const {featureState, featureDispatch} = useFeatures();
+  const {currentVideo} = featureState;
   const [modalActive, setModalActive] = useState(false);
   const [watchLater, setWatchLater] = useState(false);
   return (
@@ -82,7 +84,7 @@ export const VideoListingCard = ({ video }) => {
   const navigate = useNavigate();
   const { authToken, authStatus } = auth;
   const { featureState, featureDispatch } = useFeatures();
-  const { watchLaterVideos } = featureState;
+  const { watchLaterVideos, playlist, currentVideo } = featureState;
   const { modal, setModal } = useVideo();
   const { _id, title } = video;
   const [modalActive, setModalActive] = useState(false);
@@ -99,6 +101,7 @@ export const VideoListingCard = ({ video }) => {
           <i
             onClick={() => {
               modalActive ? setModalActive(false) : setModalActive(true);
+              featureDispatch({type: "SET_VIDEO", payload : video});
             }}
             className="fa-solid fa-xl fa-ellipsis-vertical kebab-menu"
           ></i>
@@ -138,7 +141,11 @@ export const VideoListingCard = ({ video }) => {
               </>
             )}
             <div
-              onClick={() => setModal(!modal)}
+              onClick={() => {
+                
+                setModal(!modal)
+                
+              }}
               className="modalTextTwo flex_r"
             >
               <i className="fa-solid fa-list-check fa-sm"></i>
@@ -149,7 +156,7 @@ export const VideoListingCard = ({ video }) => {
         {modal && (
           <>
             <div className="playlist-overlay">
-              <PlayListModal key={video._id} />
+              <PlayListModal video={video} key={video._id} />
             </div>
           </>
         )}
@@ -162,10 +169,10 @@ export const PlaylistCard = () => {
   const { featureState, featureDispatch } = useFeatures();
   const { auth } = useAuth();
   const { authStatus, authToken } = auth;
-  const { playlistVideos } = featureState;
+  const { playlist } = featureState;
   return (
     <>
-      {playlistVideos.map((playlistName) => (
+      {playlist.map((playlistName) => (
         <div className="playlist-card">
           <div className="deletePlaylist">
             <i

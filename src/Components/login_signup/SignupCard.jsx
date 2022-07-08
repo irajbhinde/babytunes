@@ -34,7 +34,6 @@ export default function SignupCard() {
         email: email,
         password: password,
       });
-      console.log(response);
       localStorage.setItem("token", response.data.encodedToken);
       setAuth({
         ...auth,

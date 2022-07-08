@@ -5,7 +5,9 @@ const initialState = {
   likedVideos: [],
   watchLaterVideos: [],
   historyVideos: [],
-  playlistVideos: [],
+  playlist: [],
+  playlistVideos : [],
+  currentVideo : {}
 };
 
 const PageFeaturesContext = createContext(null);

@@ -40,6 +40,7 @@ export default function VideoListingPage() {
           <div className="video-listing">
             {sortByCategory.map((video) => (
               <VideoListingCard video={video} key={video._id} />
+              
             ))}
           </div>
         </div>

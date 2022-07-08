@@ -63,37 +63,100 @@ const deleteFromWatchLater = async (video, featureDispatch, authToken) => {
 };
 
 const addToPlaylist = async (playlistTitle, featureDispatch, authToken) => {
-  try{
-    const response = await axios.post(`/api/user/playlists`, {
-      playlist : {title : playlistTitle}
-    },{
-      headers : {
-        authorization : authToken,
-      }
-    }
-    );
-    featureDispatch({type: "ADD_TO_PLAYLIST", payload : response.data.playlists})
-    console.log(response);
-  }
-  catch(error){
-    console.log(error);
-  }
-}
-
-const deleteFromPlaylist = async(playlistTitle, featureDispatch, authToken) => {
   try {
-    const response = await axios.delete(`api/user/playlists/${playlistTitle._id}`,{
-      headers : {
-        authorization : authToken
+    const response = await axios.post(
+      `/api/user/playlists`,
+      {
+        playlist: { title: playlistTitle },
+      },
+      {
+        headers: {
+          authorization: authToken,
+        },
       }
-    })
-    featureDispatch({type : "DELETE_PLAYLIST", payload : playlistTitle})
-  }
-  catch(error){
+    );
+    featureDispatch({
+      type: "ADD_TO_PLAYLIST",
+      payload: response.data.playlists,
+    });
+  } catch (error) {
     console.log(error);
   }
-  
-}
+};
+
+const deleteFromPlaylist = async (
+  playlistTitle,
+  featureDispatch,
+  authToken
+) => {
+  try {
+    const response = await axios.delete(
+      `api/user/playlists/${playlistTitle._id}`,
+      {
+        headers: {
+          authorization: authToken,
+        },
+      }
+    );
+    featureDispatch({ type: "DELETE_PLAYLIST", payload: playlistTitle });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const addVideoToPlaylist = async (
+  playlistTitle,
+  playlistId,
+  currentVideo,
+  featureDispatch,
+  authToken
+) => {
+  try {
+    const response = await axios.post(
+      `api/user/playlists/${playlistId}`,
+      {
+        video: currentVideo,
+      },
+      {
+        headers: {
+          authorization: authToken,
+        },
+      }
+    );
+    featureDispatch({
+      type: "UPDATE_PLAYLIST",
+      payload: response.data.playlist,
+    });
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteVideoFromPlaylist = async (
+  playlistTitle,
+  playlistId,
+  currentVideo,
+  featureDispatch,
+  authToken
+) => {
+  try {
+    const response = await axios.delete(
+      `api/user/playlists/${playlistId}/${currentVideo._id}`,
+      {
+        headers: {
+          authorization: authToken,
+        },
+      }
+    );
+    featureDispatch({
+      type: "MODIFY_PLAYLIST",
+      payload: response.data.playlist,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export {
   addToLikedVideos,
@@ -101,5 +164,7 @@ export {
   addToWatchLater,
   deleteFromWatchLater,
   addToPlaylist,
-  deleteFromPlaylist
+  deleteFromPlaylist,
+  addVideoToPlaylist,
+  deleteVideoFromPlaylist,
 };
