@@ -115,11 +115,11 @@
   color: white;
   width: 26rem;
   height: max-content;
-  background-color: #202020;
+  background-color: var(--modal-bg);
 }
 
 .modal div {
-  background-color: #202020;
+  background-color: var(--modal-bg);
   cursor: pointer;
   font-size: 1.6rem;
   gap: 2rem;
