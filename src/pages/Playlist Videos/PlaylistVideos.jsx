@@ -5,13 +5,11 @@ import {
   Nav,
   PlaylistVideoCard,
   Sidebar,
-  VideoListingCard,
 } from "../../Components";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 
 export default function PlaylistVideos() {
-  const { featureState, featureDispatch } = useFeatures();
+  const { featureState } = useFeatures();
   const { playlist } = featureState;
   const navigate = useNavigate();
   const { playlistId } = useParams();

@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { featureReducer } from "../reducers/featureReducer";
 
 const initialState = {
@@ -6,8 +6,8 @@ const initialState = {
   watchLaterVideos: [],
   historyVideos: [],
   playlist: [],
-  playlistVideos : [],
-  currentVideo : {}
+  playlistVideos: [],
+  currentVideo: {},
 };
 
 const PageFeaturesContext = createContext(null);

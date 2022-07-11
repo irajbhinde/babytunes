@@ -1,6 +1,5 @@
 import Sidebar from "../Components/Sidebar/Sidebar";
 import {
-  MustWatchCards,
   CategoryCard,
   VideoListingCard,
   PlaylistCard,
@@ -17,7 +16,6 @@ import SignupCard from "./login_signup/SignupCard";
 
 export {
   Sidebar,
-  MustWatchCards,
   CategoryCard,
   Nav,
   Chips,

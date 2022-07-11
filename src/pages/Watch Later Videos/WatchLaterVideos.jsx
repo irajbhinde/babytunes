@@ -1,12 +1,11 @@
 import { Nav, Sidebar, VideoListingCard } from "../../Components";
-import { useAuth, useFeatures } from "../../Components/context";
+import { useFeatures } from "../../Components/context";
 import "../../Utils/styles.css";
 import "./watchLaterVideos-page.css";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function WatchLaterVideos() {
-  const { featureState, featureDispatch } = useFeatures();
+  const { featureState } = useFeatures();
   const { watchLaterVideos } = featureState;
   const navigate = useNavigate();
 

@@ -10,7 +10,7 @@ import { useAuth, useVideo, useFeatures } from "../context/index";
 import { useNavigate } from "react-router-dom";
 
 export const PlayListModal = () => {
-  const { modal, setModal } = useVideo();
+  const { setModal } = useVideo();
   const { auth } = useAuth();
   const navigate = useNavigate();
   const { authToken, authStatus } = auth;
@@ -100,12 +100,11 @@ export const PlayListModal = () => {
 };
 
 export const CreateNewPlaylistModal = () => {
-  const { modal, setModal } = useVideo();
+  const { setModal } = useVideo();
   const { auth } = useAuth();
   const navigate = useNavigate();
   const { authToken, authStatus } = auth;
-  const { featureState, featureDispatch } = useFeatures();
-  const { playlist, currentVideo } = featureState;
+  const { featureDispatch } = useFeatures();
   const [playlistName, setPlaylistName] = useState("");
   return (
     <div className="playlist-modal">

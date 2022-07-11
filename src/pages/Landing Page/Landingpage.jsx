@@ -1,6 +1,5 @@
 import {
   CategoryCard,
-  MustWatchCards,
   Nav,
   PlayListModal,
   Sidebar,
@@ -13,7 +12,7 @@ import { useVideo } from "../../Components/context/video-context";
 import { videos } from "../../backend/db/videos";
 export default function Landingpage() {
   const { videoDispatch } = useVideo();
-  const { modal, setModal } = useVideo();
+  const { modal } = useVideo();
 
   const navigationByCategory = (categoryName) => {
     videoDispatch({ type: "CLEAR_ALL" });

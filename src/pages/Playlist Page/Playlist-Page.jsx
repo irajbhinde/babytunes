@@ -3,7 +3,6 @@ import "../../Utils/styles.css";
 import {
   Nav,
   PlaylistCard,
-  PlayListModal,
   Sidebar,
   CreateNewPlaylistModal,
 } from "../../Components";
@@ -11,7 +10,7 @@ import { useFeatures, useVideo } from "../../Components/context";
 import { useNavigate } from "react-router-dom";
 
 export default function PlaylistPage() {
-  const { featureState, featureDispatch } = useFeatures();
+  const { featureState } = useFeatures();
   const { playlist } = featureState;
   const navigate = useNavigate();
   const { modal, setModal } = useVideo();
