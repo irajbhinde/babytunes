@@ -5,7 +5,7 @@
   overflow-x: hidden;
 }
 
-.watchLater{
+.watchLater {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -26,19 +26,20 @@
     "sidebar watchLater-videos watchLater-videos";
 }
 
-.empty-list-msg{
+.empty-list-msg {
   margin-top: 2rem;
 }
 
-.btn-explore{
+.btn-explore,
+.btn-createPlaylist {
   padding: 1.5rem 3rem;
   cursor: pointer;
   background-color: var(--login-purple);
 }
 
-.center-container{
-  gap: 5rem;
-  height: 100%;
+.center-container {
+  gap: 2rem;
+  height: calc(100% - 10.6rem);
   display: flex;
   align-items: center;
   justify-content: center;
