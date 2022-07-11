@@ -1,7 +1,8 @@
 import MockmanEs from "mockman-js";
 import { Routes, Route } from "react-router-dom";
-import {Landingpage, VideoListingPage, LoginPage, WatchLaterVideos, PlaylistPage} from "../index"
+import {Landingpage, VideoListingPage, LoginPage, WatchLaterVideos, PlaylistPage, PlaylistVideos} from "../index"
 import SignupPage from "../Signup Page/SignupPage";
+import VideoPage from "../Video Page/VideoPage";
 
 export default function Router(){
     return(
@@ -13,6 +14,7 @@ export default function Router(){
             <Route path="/mockman" element={<MockmanEs />} />
             <Route path="/watchlater" element={<WatchLaterVideos />} />
             <Route path="/playlist" element={<PlaylistPage />} />
+            <Route path="/playlist/:playlistId" element={<PlaylistVideos />} />
         </Routes>
     )
 }

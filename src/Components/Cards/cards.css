@@ -156,7 +156,7 @@
 .playlist-card-footer {
   gap: 1rem;
   width: 75%;
-  height: 100%;
+  height: 82%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,9 +175,43 @@
   left: 0;
   z-index: 1;
   width: 11%;
-  height: 95%;
+  height: 98%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   color: var(--crimson-red);
+}
+
+.videoDescription-container {
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+
+.video-features{
+  justify-content: space-between;
+  border-bottom: 2px solid var(--hover-graybg);
+  padding-bottom: 1rem;
+}
+
+.video-functions{
+  gap: 2rem !important; 
+}
+
+.video-features div{
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.video-container{
+  gap: 1rem;
+}
+
+.video-description{
+  font-size: 1.6rem;
+  max-width: 120rem;
+}
+
+.video-creator{
+  color: var(--gray-text);
 }

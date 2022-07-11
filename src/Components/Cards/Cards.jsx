@@ -1,12 +1,13 @@
 import "./cards.css";
 import "../../Utils/styles.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useVideo, useAuth, useFeatures } from "../context/index";
 import {
   addToWatchLater,
   deleteFromWatchLater,
   deleteFromPlaylist,
+  deleteVideoFromPlaylist,
 } from "../../Utils/videoPage-functions";
 import { PlayListModal } from "../index";
 
@@ -31,8 +32,8 @@ export const CategoryCard = ({ navigationByCategory, category }) => {
 export const MustWatchCards = ({ video }) => {
   const { modal, setModal } = useVideo();
   const { _id, title } = video;
-  const {featureState, featureDispatch} = useFeatures();
-  const {currentVideo} = featureState;
+  const { featureState, featureDispatch } = useFeatures();
+  const { currentVideo } = featureState;
   const [modalActive, setModalActive] = useState(false);
   const [watchLater, setWatchLater] = useState(false);
   return (
@@ -90,7 +91,7 @@ export const VideoListingCard = ({ video }) => {
   const [modalActive, setModalActive] = useState(false);
   return (
     <>
-      <div key={video._id} className="videolisting-cards">
+      <div key={_id} className="videolisting-cards">
         <img
           className="videolisting_img"
           src="https://i.ytimg.com/vi/f013dR_y7DI/hqdefault.jpg?s…RUAAIhCGAE=&rs=AOn4CLCmmUMogcnMu2KFfSuEnC-AN0plmw"
@@ -101,7 +102,6 @@ export const VideoListingCard = ({ video }) => {
           <i
             onClick={() => {
               modalActive ? setModalActive(false) : setModalActive(true);
-              featureDispatch({type: "SET_VIDEO", payload : video});
             }}
             className="fa-solid fa-xl fa-ellipsis-vertical kebab-menu"
           ></i>
@@ -142,9 +142,8 @@ export const VideoListingCard = ({ video }) => {
             )}
             <div
               onClick={() => {
-                
-                setModal(!modal)
-                
+                setModal(!modal);
+                featureDispatch({ type: "SET_VIDEO", payload: video });
               }}
               className="modalTextTwo flex_r"
             >
@@ -170,6 +169,7 @@ export const PlaylistCard = () => {
   const { auth } = useAuth();
   const { authStatus, authToken } = auth;
   const { playlist } = featureState;
+  const navigate = useNavigate();
   return (
     <>
       {playlist.map((playlistName) => (
@@ -182,14 +182,75 @@ export const PlaylistCard = () => {
               class="fa-solid fa-trash cursor-pointer"
             ></i>
           </div>
-          <div className="playlist-card-overlay">
+          <div
+            onClick={() => {
+              navigate(`/playlist/${playlistName._id}`);
+            }}
+            className="playlist-card-overlay cursor-pointer"
+          >
             <i class="fa-solid fa-play"></i>
           </div>
-          <footer className="playlist-card-footer">
+          <footer
+            onClick={() => {
+              navigate(`/playlist/${playlistName._id}`);
+            }}
+            className="playlist-card-footer cursor-pointer"
+          >
             <p>{playlistName.title}</p>
           </footer>
         </div>
       ))}
     </>
+  );
+};
+
+export const PlaylistVideoCard = ({ video, playlistId }) => {
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+  const { authToken, authStatus } = auth;
+  const { featureState, featureDispatch } = useFeatures();
+  const { watchLaterVideos, playlist, currentVideo } = featureState;
+  const { modal, setModal } = useVideo();
+  const { _id, title } = video;
+  const [modalActive, setModalActive] = useState(false);
+  return (
+    <div key={_id} className="videolisting-cards">
+      <img
+        className="videolisting_img"
+        src="https://i.ytimg.com/vi/f013dR_y7DI/hqdefault.jpg?s…RUAAIhCGAE=&rs=AOn4CLCmmUMogcnMu2KFfSuEnC-AN0plmw"
+        alt="error"
+      />
+      <span className="videolisting-content">
+        <p className="flex_r flex1">{title}</p>
+        <i
+          onClick={() => {
+            modalActive ? setModalActive(false) : setModalActive(true);
+          }}
+          className="fa-solid fa-xl fa-ellipsis-vertical kebab-menu"
+        ></i>
+      </span>
+      {modalActive && (
+        <div className="modal flex_c">
+          <div
+            onClick={() => {
+              deleteVideoFromPlaylist(
+                title,
+                playlistId,
+                video,
+                featureDispatch,
+                authToken
+              );
+            }}
+            className="modalText flex_r"
+          >
+            <i
+              style={{ color: "var(--crimson-red" }}
+              className="fa-solid fa-trash-can"
+            ></i>
+            <p>Remove from Playlist</p>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };

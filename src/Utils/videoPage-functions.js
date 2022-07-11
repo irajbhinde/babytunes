@@ -124,7 +124,7 @@ const addVideoToPlaylist = async (
       }
     );
     featureDispatch({
-      type: "UPDATE_PLAYLIST",
+      type: "MODIFY_PLAYLIST",
       payload: response.data.playlist,
     });
     console.log(response);
@@ -142,7 +142,7 @@ const deleteVideoFromPlaylist = async (
 ) => {
   try {
     const response = await axios.delete(
-      `api/user/playlists/${playlistId}/${currentVideo._id}`,
+      `/api/user/playlists/${playlistId}/${currentVideo._id}`,
       {
         headers: {
           authorization: authToken,

@@ -45,18 +45,6 @@ export const featureReducer = (state, action) => {
           ...state.playlist.filter((list) => list._id !== payload._id),
         ],
       };
-    // case "ADD_VIDEO_TO_PLAYLIST":
-    //   return {
-    //     ...state,
-    //     playlist: [payload],
-    //   };
-    // case "DELETE_VIDEO_FROM_PLAYLIST":
-    //   return {
-    //     ...state,
-    //     playlist: [
-    //       ...state.playlist.filter((vid) => vid._id !== payload._id),
-    //     ],
-    //   };
     case "SET_VIDEO":
       return {
         ...state,

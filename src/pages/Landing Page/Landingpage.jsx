@@ -4,6 +4,7 @@ import {
   Nav,
   PlayListModal,
   Sidebar,
+  VideoListingCard,
 } from "../../Components";
 import { categories } from "../../backend/db/categories";
 import "./landingPage.css";
@@ -24,7 +25,7 @@ export default function Landingpage() {
         {modal && (
           <>
             <div className="playlist-overlay">
-              <PlayListModal />
+              <PlayListModal videos={videos} key={videos._id} />
             </div>
           </>
         )}
@@ -46,7 +47,7 @@ export default function Landingpage() {
               {videos.map(
                 (video) =>
                   video.bottom && (
-                    <MustWatchCards video={video} key={video._id} />
+                    <VideoListingCard video={video} key={video._id} />
                   )
               )}
             </div>
