@@ -70,7 +70,7 @@ export default function LoginCard() {
               name="password"
               value={formik.values.password}
               onChange={formik.handleChange}
-              type="password"
+              type={passType}
             />
             {passType === "text" ? (
               <i
