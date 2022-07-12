@@ -11,10 +11,12 @@ export default function Sidebar() {
           <span>Home</span>
         </div>
       </Link>
-      <div>
-        <i className="fa-solid fa-heart fa-lg"></i>
-        <span>Liked Videos</span>
-      </div>
+      <Link to="/likedvideos">
+        <div>
+          <i className="fa-solid fa-heart fa-lg"></i>
+          <span>Liked Videos</span>
+        </div>
+      </Link>
       <Link to="/playlist">
         <div>
           <i className="fa-solid fa-list-check fa-lg"></i>

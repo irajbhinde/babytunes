@@ -228,47 +228,44 @@ export const VideoPlayerCard = () => {
         <div className="video-functions flex_r">
           {likedVideos.find((vid) => vid._id === currentVideo._id) ? (
             <>
-              <div className="flex_r cursor-pointer">
+              <div
+                onClick={() => {
+                  authStatus
+                    ? deleteFromLikedVideos(
+                        currentVideo,
+                        featureDispatch,
+                        authToken
+                      )
+                    : navigate("/login");
+                }}
+                className="flex_r cursor-pointer"
+              >
                 <i className="fa-solid fa-thumbs-down"></i>
-                <p
-                  onClick={() => {
-                    authStatus
-                      ? deleteFromLikedVideos(
-                          currentVideo,
-                          featureDispatch,
-                          authToken
-                        )
-                      : navigate("/login");
-                  }}
-                >
-                  Dislike
-                </p>
+                <p>Dislike</p>
               </div>
             </>
           ) : (
             <>
-              <div className="flex_r cursor-pointer">
+              <div
+                onClick={() => {
+                  authStatus
+                    ? addToLikedVideos(currentVideo, featureDispatch, authToken)
+                    : navigate("/login");
+                }}
+                className="flex_r cursor-pointer"
+              >
                 <i className="fa-solid fa-thumbs-up"></i>
-                <p
-                  onClick={() => {
-                    authStatus
-                      ? addToLikedVideos(
-                          currentVideo,
-                          featureDispatch,
-                          authToken
-                        )
-                      : navigate("/login");
-                  }}
-                >
-                  Like
-                </p>
+                <p>Like</p>
               </div>
             </>
           )}
 
-          <div onClick={() => {
-            setModal(!modal)
-          }} className="flex_r cursor-pointer">
+          <div
+            onClick={() => {
+              setModal(!modal);
+            }}
+            className="flex_r cursor-pointer"
+          >
             <i className="fa-solid fa-list-check fa-lg"></i>
             <p>Add to Playlist</p>
           </div>
