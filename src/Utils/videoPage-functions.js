@@ -24,7 +24,7 @@ const deleteFromLikedVideos = async (video, featureDispatch, authToken) => {
         authorization: authToken,
       },
     });
-    featureDispatch({ type: "REMOVE_FROM_LIKED_VIDEOS", payload: video });
+    featureDispatch({ type: "DELETE_FROM_LIKED_VIDEOS", payload: video });
   } catch (error) {
     console.log(error);
   }
@@ -113,7 +113,7 @@ const addVideoToPlaylist = async (
 ) => {
   try {
     const response = await axios.post(
-      `api/user/playlists/${playlistId}`,
+      `/api/user/playlists/${playlistId}`,
       {
         video: currentVideo,
       },
@@ -127,7 +127,6 @@ const addVideoToPlaylist = async (
       type: "MODIFY_PLAYLIST",
       payload: response.data.playlist,
     });
-    console.log(response);
   } catch (error) {
     console.log(error);
   }

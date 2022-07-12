@@ -8,6 +8,8 @@ import {
   deleteFromWatchLater,
   deleteFromPlaylist,
   deleteVideoFromPlaylist,
+  addToLikedVideos,
+  deleteFromLikedVideos,
 } from "../../Utils/videoPage-functions";
 import { PlayListModal } from "../index";
 import ReactPlayer from "react-player";
@@ -207,9 +209,16 @@ export const PlaylistVideoCard = ({ video, playlistId }) => {
 };
 
 export const VideoPlayerCard = () => {
-  const { featureState } = useFeatures();
+  const { featureState, featureDispatch } = useFeatures();
   const { currentVideo } = featureState;
   const { url, title, creator, description } = currentVideo;
+  const { auth } = useAuth();
+  const { authToken, authStatus } = auth;
+  const navigate = useNavigate();
+  const { likedVideos, watchLaterVideos } = featureState;
+  const { modal, setModal } = useVideo();
+  console.log(currentVideo._id);
+  console.log("lyk", likedVideos);
   return (
     <div className="video-container flex_c">
       <ReactPlayer width="120rem" height="45rem" controls={true} url={url} />
@@ -217,23 +226,88 @@ export const VideoPlayerCard = () => {
       <div className="video-features flex_r">
         <div className="video-creator">{creator}</div>
         <div className="video-functions flex_r">
-          <div className="flex_r cursor-pointer">
-            <i className="fa-solid fa-thumbs-up"></i>
-            <p>Like</p>
-          </div>
-          <div className="flex_r cursor-pointer">
+          {likedVideos.find((vid) => vid._id === currentVideo._id) ? (
+            <>
+              <div className="flex_r cursor-pointer">
+                <i className="fa-solid fa-thumbs-down"></i>
+                <p
+                  onClick={() => {
+                    authStatus
+                      ? deleteFromLikedVideos(
+                          currentVideo,
+                          featureDispatch,
+                          authToken
+                        )
+                      : navigate("/login");
+                  }}
+                >
+                  Dislike
+                </p>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="flex_r cursor-pointer">
+                <i className="fa-solid fa-thumbs-up"></i>
+                <p
+                  onClick={() => {
+                    authStatus
+                      ? addToLikedVideos(
+                          currentVideo,
+                          featureDispatch,
+                          authToken
+                        )
+                      : navigate("/login");
+                  }}
+                >
+                  Like
+                </p>
+              </div>
+            </>
+          )}
+
+          <div onClick={() => {
+            setModal(!modal)
+          }} className="flex_r cursor-pointer">
             <i className="fa-solid fa-list-check fa-lg"></i>
             <p>Add to Playlist</p>
           </div>
-          <div className="flex_r cursor-pointer">
-            <i className="fa-regular fa-clock fa-lg"></i>
-            <p>Add to Watch Later</p>
-          </div>
+          {watchLaterVideos.find((vid) => vid._id === currentVideo._id) ? (
+            <div
+              style={{ color: "var(--crimson-red)" }}
+              onClick={() =>
+                deleteFromWatchLater(currentVideo, featureDispatch, authToken)
+              }
+              className="flex_r cursor-pointer"
+            >
+              <i className="fa-regular fa-clock fa-lg"></i>
+              <p>Remove from Watch Later</p>
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                authStatus
+                  ? addToWatchLater(currentVideo, featureDispatch, authToken)
+                  : navigate("/login");
+              }}
+              className="flex_r cursor-pointer"
+            >
+              <i className="fa-regular fa-clock fa-lg"></i>
+              <p>Add to Watch Later</p>
+            </div>
+          )}
         </div>
       </div>
       <div className="video-description">
         <p>{description}</p>
       </div>
+      {modal && (
+        <>
+          <div className="playlist-overlay">
+            <PlayListModal />
+          </div>
+        </>
+      )}
     </div>
   );
 };
