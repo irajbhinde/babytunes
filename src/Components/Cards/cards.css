@@ -99,6 +99,7 @@
   font-size: 1.6rem;
   padding-top: 1rem;
   display: flex;
+  gap: 0.5rem;
 }
 
 .kebab-menu {

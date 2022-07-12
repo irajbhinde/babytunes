@@ -7,6 +7,7 @@ import {
   WatchLaterVideos,
   PlaylistPage,
   PlaylistVideos,
+  VideoPage
 } from "../index";
 import SignupPage from "../Signup Page/SignupPage";
 
@@ -21,6 +22,7 @@ export default function Router() {
       <Route path="/watchlater" element={<WatchLaterVideos />} />
       <Route path="/playlist" element={<PlaylistPage />} />
       <Route path="/playlist/:playlistId" element={<PlaylistVideos />} />
+      <Route path="/video/:videoId" element={< VideoPage />} />
     </Routes>
   );
 }

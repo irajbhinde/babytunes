@@ -1,6 +1,6 @@
 import "./cards.css";
 import "../../Utils/styles.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useVideo, useAuth, useFeatures } from "../context/index";
 import {
@@ -10,6 +10,7 @@ import {
   deleteVideoFromPlaylist,
 } from "../../Utils/videoPage-functions";
 import { PlayListModal } from "../index";
+import ReactPlayer from "react-player";
 
 export const CategoryCard = ({ navigationByCategory, category }) => {
   const { categoryName, _id, image } = category;
@@ -42,6 +43,10 @@ export const VideoListingCard = ({ video }) => {
     <>
       <div key={_id} className="videolisting-cards">
         <img
+          onClick={() => {
+            featureDispatch({ type: "SET_VIDEO", payload: video });
+            navigate(`/video/${_id}`);
+          }}
           className="videolisting_img"
           src="https://i.ytimg.com/vi/f013dR_y7DI/hqdefault.jpg?s…RUAAIhCGAE=&rs=AOn4CLCmmUMogcnMu2KFfSuEnC-AN0plmw"
           alt="error"
@@ -197,6 +202,38 @@ export const PlaylistVideoCard = ({ video, playlistId }) => {
           </div>
         </div>
       )}
+    </div>
+  );
+};
+
+export const VideoPlayerCard = () => {
+  const { featureState } = useFeatures();
+  const { currentVideo } = featureState;
+  const { url, title, creator, description } = currentVideo;
+  return (
+    <div className="video-container flex_c">
+      <ReactPlayer width="120rem" height="45rem" controls={true} url={url} />
+      <div className="videoDescription-container flex_r">{title}</div>
+      <div className="video-features flex_r">
+        <div className="video-creator">{creator}</div>
+        <div className="video-functions flex_r">
+          <div className="flex_r cursor-pointer">
+            <i className="fa-solid fa-thumbs-up"></i>
+            <p>Like</p>
+          </div>
+          <div className="flex_r cursor-pointer">
+            <i className="fa-solid fa-list-check fa-lg"></i>
+            <p>Add to Playlist</p>
+          </div>
+          <div className="flex_r cursor-pointer">
+            <i className="fa-regular fa-clock fa-lg"></i>
+            <p>Add to Watch Later</p>
+          </div>
+        </div>
+      </div>
+      <div className="video-description">
+        <p>{description}</p>
+      </div>
     </div>
   );
 };
