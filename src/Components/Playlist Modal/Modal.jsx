@@ -137,3 +137,42 @@ export const CreateNewPlaylistModal = () => {
     </div>
   );
 };
+
+export const HistoryPageModal = () => {
+  const { setModal } = useVideo();
+  const { auth } = useAuth();
+  const navigate = useNavigate();
+  const { authToken, authStatus } = auth;
+  const { featureDispatch } = useFeatures();
+  const [playlistName, setPlaylistName] = useState("");
+  return (
+    <div className="playlist-modal">
+      <div className="header flex_r">
+        <p>Create a new Playlist</p>
+        <i
+          onClick={() => setModal(false)}
+          className="fa-solid fa-xmark fa-lg"
+        ></i>
+      </div>
+      <div className="modal-footer">
+        <input
+          type="text"
+          placeholder="Create a New Playlist"
+          onChange={(e) => {
+            setPlaylistName(e.target.value);
+          }}
+        />
+        <button className="plus-icon">
+          <i
+            onClick={() => {
+              authStatus
+                ? addToPlaylist(playlistName, featureDispatch, authToken)
+                : navigate("/login");
+            }}
+            className="fa-solid fa-plus fa-lg"
+          ></i>
+        </button>
+      </div>
+    </div>
+  );
+};

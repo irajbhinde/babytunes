@@ -6,6 +6,7 @@ import PlaylistPage from "./Playlist Page/Playlist-Page";
 import PlaylistVideos from "./Playlist Videos/PlaylistVideos";
 import VideoPage from "./Video Page/VideoPage";
 import LikedVideosPage from "./Liked Videos/LikedVideosPage";
+import HistoryPage from "./History Page/HistoryPage";
 import Router from "./Routes/Router";
 
 export {
@@ -18,4 +19,5 @@ export {
   PlaylistVideos,
   VideoPage,
   LikedVideosPage,
+  HistoryPage,
 };

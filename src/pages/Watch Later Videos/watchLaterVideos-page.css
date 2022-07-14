@@ -31,7 +31,8 @@
 }
 
 .btn-explore,
-.btn-createPlaylist {
+.btn-createPlaylist,
+.btn-clearaHistory {
   padding: 1.5rem 3rem;
   cursor: pointer;
   background-color: var(--login-purple);

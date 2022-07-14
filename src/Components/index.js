@@ -4,7 +4,8 @@ import {
   VideoListingCard,
   PlaylistCard,
   PlaylistVideoCard,
-  VideoPlayerCard
+  VideoPlayerCard,
+  HistoryPageCard
 } from "./Cards/Cards";
 import Nav from "../Components/Nav/Nav";
 import Chips from "../Components/Chips/Chips";
@@ -27,5 +28,6 @@ export {
   PlaylistCard,
   PlaylistVideoCard,
   CreateNewPlaylistModal,
-  VideoPlayerCard
+  VideoPlayerCard,
+  HistoryPageCard
 };

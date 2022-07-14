@@ -50,6 +50,23 @@ export const featureReducer = (state, action) => {
         ...state,
         currentVideo: payload,
       };
+    case "ADD_TO_HISTORY":
+      return {
+        ...state,
+        historyVideos: [...state.historyVideos, payload],
+      };
+    case "DELETE_FROM_HISTORY":
+      return {
+        ...state,
+        historyVideos: [
+          ...state.historyVideos.filter((vid) => vid._id !== payload._id),
+        ],
+      };
+    case "DELETE_ENTIRE_HISTORY":
+      return {
+        ...state,
+        historyVideos: payload,
+      };
     default:
       return state;
   }
