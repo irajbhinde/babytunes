@@ -100,10 +100,12 @@ export const VideoListingCard = ({ video }) => {
               </>
             )}
             <div
-              onClick={() => {
-                setModal(!modal);
-                featureDispatch({ type: "SET_VIDEO", payload: video });
-              }}
+              onClick={() =>
+                authStatus
+                  ? (setModal(!modal),
+                    featureDispatch({ type: "SET_VIDEO", payload: video }))
+                  : navigate("/login")
+              }
               className="modalTextTwo flex_r"
             >
               <i className="fa-solid fa-list-check fa-sm"></i>
@@ -269,9 +271,9 @@ export const VideoPlayerCard = () => {
           )}
 
           <div
-            onClick={() => {
-              setModal(!modal);
-            }}
+            onClick={() =>
+              authStatus ? (setModal(!modal)) : navigate("/login")
+            }
             className="flex_r cursor-pointer"
           >
             <i className="fa-solid fa-list-check fa-lg"></i>
@@ -320,11 +322,10 @@ export const VideoPlayerCard = () => {
 export const HistoryPageCard = ({ video }) => {
   const { auth } = useAuth();
   const { authToken } = auth;
-  const { featureState, featureDispatch } = useFeatures();
+  const { featureDispatch } = useFeatures();
   const { _id, title } = video;
   const [modalActive, setModalActive] = useState(false);
   const navigate = useNavigate();
-  const { currentVideo } = featureState;
   return (
     <div key={_id} className="videolisting-cards">
       <img

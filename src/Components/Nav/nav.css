@@ -7,6 +7,8 @@
 .avatar {
   margin-right: 3rem;
   cursor: pointer;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-bar {
