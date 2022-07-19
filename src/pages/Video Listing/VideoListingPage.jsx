@@ -1,19 +1,51 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { videos } from "../../backend/db/videos";
-import { Chips, Nav, Sidebar, VideoListingCard } from "../../Components";
+import {
+  Chips,
+  Nav,
+  Sidebar,
+  VideoListingCard,
+  PlayListModal,
+} from "../../Components";
+import { useVideo } from "../../Components/context/video-context";
 import "./video-listing-page.css";
+import { getFilteredData } from "../../Utils/getFilteredData";
 
 export default function VideoListingPage() {
-  console.log(videos);
+  const { modal, setModal } = useVideo();
+  const {
+    videoState: { categories },
+  } = useVideo();
+  const [videoData, setVideoData] = useState([]);
+  useEffect(() => {
+    async function getData() {
+      try {
+        const response = await axios.get("/api/videos");
+        setVideoData(response.data.videos);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getData();
+  }, []);
+  const sortByCategory = getFilteredData(videoData, categories);
   return (
     <>
       <div className="videolisting-page-wrapper">
+        {modal && (
+          <>
+            <div className="playlist-overlay">
+              <PlayListModal />
+            </div>
+          </>
+        )}
         <Nav />
         <Sidebar />
         <Chips />
         <div className="videolisting-container">
-          
           <div className="video-listing">
-            {videos.map((video) => (
+            {sortByCategory.map((video) => (
               <VideoListingCard video={video} key={video._id} />
             ))}
           </div>

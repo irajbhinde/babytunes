@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-a{
+a {
   text-decoration: none;
   color: var(--white-textcolor);
 }
@@ -21,6 +21,7 @@ html {
   --chips-bg: #373737;
   --chips-border: #424242;
   --white-textcolor: hsl(0deg 0% 96%);
+  --crimson-red: #dc143c;
 }
 
 .flex_r {
