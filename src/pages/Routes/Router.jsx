@@ -7,8 +7,12 @@ import {
   WatchLaterVideos,
   PlaylistPage,
   PlaylistVideos,
+  VideoPage,
+  LikedVideosPage,
+  HistoryPage,
 } from "../index";
 import SignupPage from "../Signup Page/SignupPage";
+import RequiresAuth from "../../Utils/RequiresAuth";
 
 export default function Router() {
   return (
@@ -18,9 +22,47 @@ export default function Router() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/mockman" element={<MockmanEs />} />
-      <Route path="/watchlater" element={<WatchLaterVideos />} />
-      <Route path="/playlist" element={<PlaylistPage />} />
-      <Route path="/playlist/:playlistId" element={<PlaylistVideos />} />
+      <Route
+        path="/watchlater"
+        element={
+          <RequiresAuth>
+            <WatchLaterVideos />
+          </RequiresAuth>
+        }
+      />
+      <Route
+        path="/playlist"
+        element={
+          <RequiresAuth>
+            <PlaylistPage />
+          </RequiresAuth>
+        }
+      />
+      <Route
+        path="/playlist/:playlistId"
+        element={
+          <RequiresAuth>
+            <PlaylistVideos />
+          </RequiresAuth>
+        }
+      />
+      <Route path="/video/:videoId" element={<VideoPage />} />
+      <Route
+        path="/likedvideos"
+        element={
+          <RequiresAuth>
+            <LikedVideosPage />
+          </RequiresAuth>
+        }
+      />
+      <Route
+        path="/history"
+        element={
+          <RequiresAuth>
+            <HistoryPage />
+          </RequiresAuth>
+        }
+      />
     </Routes>
   );
 }

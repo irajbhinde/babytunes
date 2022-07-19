@@ -24,7 +24,7 @@ const deleteFromLikedVideos = async (video, featureDispatch, authToken) => {
         authorization: authToken,
       },
     });
-    featureDispatch({ type: "REMOVE_FROM_LIKED_VIDEOS", payload: video });
+    featureDispatch({ type: "DELETE_FROM_LIKED_VIDEOS", payload: video });
   } catch (error) {
     console.log(error);
   }
@@ -113,7 +113,7 @@ const addVideoToPlaylist = async (
 ) => {
   try {
     const response = await axios.post(
-      `api/user/playlists/${playlistId}`,
+      `/api/user/playlists/${playlistId}`,
       {
         video: currentVideo,
       },
@@ -127,7 +127,6 @@ const addVideoToPlaylist = async (
       type: "MODIFY_PLAYLIST",
       payload: response.data.playlist,
     });
-    console.log(response);
   } catch (error) {
     console.log(error);
   }
@@ -158,6 +157,59 @@ const deleteVideoFromPlaylist = async (
   }
 };
 
+const addVideoToHistory = async (video, featureDispatch, authToken) => {
+  try {
+    const response = await axios.post(
+      `/api/user/history`,
+      { video },
+      {
+        headers: {
+          authorization: authToken,
+        },
+      }
+    );
+    featureDispatch({ type: "ADD_TO_HISTORY", payload: video });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteVideoFromHistory = async (
+  currentVideo,
+  featureDispatch,
+  authToken
+) => {
+  try {
+    const response = await axios.delete(
+      `/api/user/history/${currentVideo._id}`,
+      {
+        headers: {
+          authorization: authToken,
+        },
+      }
+    );
+    featureDispatch({ type: "DELETE_FROM_HISTORY", payload: currentVideo });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const deleteAllVideoFromHistory = async (featureDispatch, authToken) => {
+  try {
+    const response = await axios.delete(`/api/user/history/all`, {
+      headers: {
+        authorization: authToken,
+      },
+    });
+    featureDispatch({
+      type: "DELETE_ENTIRE_HISTORY",
+      payload: response.data.history,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export {
   addToLikedVideos,
   deleteFromLikedVideos,
@@ -167,4 +219,7 @@ export {
   deleteFromPlaylist,
   addVideoToPlaylist,
   deleteVideoFromPlaylist,
+  addVideoToHistory,
+  deleteVideoFromHistory,
+  deleteAllVideoFromHistory,
 };

@@ -1,0 +1,27 @@
+.likedVideos-page-container {
+  grid-area: likedVideos;
+  padding-left: 4rem;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.likedVideos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.likedVideos-page-wrapper {
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  color: var(--white-textcolor);
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  grid-template-rows: 5.6rem 1fr;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas:
+    "nav nav nav"
+    "sidebar likedVideos likedVideos"
+    "sidebar likedVideos likedVideos";
+}

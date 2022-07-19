@@ -8,7 +8,7 @@ export default function Nav() {
   const { authStatus } = auth;
   const navigate = useNavigate();
   const signoutHandler = () => {
-    localStorage.clear()
+    localStorage.clear();
     setAuth({
       authToken: null,
       authStatus: false,
@@ -21,19 +21,22 @@ export default function Nav() {
         <p className="nav-title">Baby Tunes</p>
       </Link>
       {authStatus ? (
-        <i
+        <div
           onClick={() => signoutHandler()}
           style={{ color: "var(--crimson-red)" }}
-          className="avatar fa-solid fa-right-to-bracket fa-lg"
-        ></i>
+          className="flex_r avatar"
+        >
+          <p>Logout</p>
+          <i className="fa-solid fa-right-to-bracket fa-lg"></i>
+        </div>
       ) : (
-        <Link to="/login">
-          
-          <i
-            style={{ color: "#00cc00" }}
-            className="avatar fa-solid fa-right-to-bracket fa-lg"
-          ></i>
-          
+        <Link
+          className="flex_r avatar"
+          style={{ color: "#00cc00" }}
+          to="/login"
+        >
+          <p>Login</p>
+          <i className="fa-solid fa-right-to-bracket fa-lg"></i>
         </Link>
       )}
     </nav>

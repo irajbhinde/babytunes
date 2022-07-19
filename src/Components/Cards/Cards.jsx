@@ -8,8 +8,13 @@ import {
   deleteFromWatchLater,
   deleteFromPlaylist,
   deleteVideoFromPlaylist,
+  addToLikedVideos,
+  deleteFromLikedVideos,
+  addVideoToHistory,
+  deleteVideoFromHistory,
 } from "../../Utils/videoPage-functions";
 import { PlayListModal } from "../index";
+import ReactPlayer from "react-player";
 
 export const CategoryCard = ({ navigationByCategory, category }) => {
   const { categoryName, _id, image } = category;
@@ -42,6 +47,11 @@ export const VideoListingCard = ({ video }) => {
     <>
       <div key={_id} className="videolisting-cards">
         <img
+          onClick={() => {
+            featureDispatch({ type: "SET_VIDEO", payload: video });
+            addVideoToHistory(video, featureDispatch, authToken);
+            navigate(`/video/${_id}`);
+          }}
           className="videolisting_img"
           src="https://i.ytimg.com/vi/f013dR_y7DI/hqdefault.jpg?s…RUAAIhCGAE=&rs=AOn4CLCmmUMogcnMu2KFfSuEnC-AN0plmw"
           alt="error"
@@ -90,10 +100,12 @@ export const VideoListingCard = ({ video }) => {
               </>
             )}
             <div
-              onClick={() => {
-                setModal(!modal);
-                featureDispatch({ type: "SET_VIDEO", payload: video });
-              }}
+              onClick={() =>
+                authStatus
+                  ? (setModal(!modal),
+                    featureDispatch({ type: "SET_VIDEO", payload: video }))
+                  : navigate("/login")
+              }
               className="modalTextTwo flex_r"
             >
               <i className="fa-solid fa-list-check fa-sm"></i>
@@ -159,9 +171,15 @@ export const PlaylistVideoCard = ({ video, playlistId }) => {
   const { featureDispatch } = useFeatures();
   const { _id, title } = video;
   const [modalActive, setModalActive] = useState(false);
+  const navigate = useNavigate();
   return (
     <div key={_id} className="videolisting-cards">
       <img
+        onClick={() => {
+          featureDispatch({ type: "SET_VIDEO", payload: video });
+          addVideoToHistory(video, featureDispatch, authToken);
+          navigate(`/video/${_id}`);
+        }}
         className="videolisting_img"
         src="https://i.ytimg.com/vi/f013dR_y7DI/hqdefault.jpg?s…RUAAIhCGAE=&rs=AOn4CLCmmUMogcnMu2KFfSuEnC-AN0plmw"
         alt="error"
@@ -194,6 +212,154 @@ export const PlaylistVideoCard = ({ video, playlistId }) => {
               className="fa-solid fa-trash-can"
             ></i>
             <p>Remove from Playlist</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const VideoPlayerCard = () => {
+  const { featureState, featureDispatch } = useFeatures();
+  const { currentVideo } = featureState;
+  const { url, title, creator, description } = currentVideo;
+  const { auth } = useAuth();
+  const { authToken, authStatus } = auth;
+  const navigate = useNavigate();
+  const { likedVideos, watchLaterVideos } = featureState;
+  const { modal, setModal } = useVideo();
+
+  return (
+    <div className="video-container flex_c">
+      <ReactPlayer width="120rem" height="45rem" controls={true} url={url} />
+      <div className="videoDescription-container flex_r">{title}</div>
+      <div className="video-features flex_r">
+        <div className="video-creator">{creator}</div>
+        <div className="video-functions flex_r">
+          {likedVideos.find((vid) => vid._id === currentVideo._id) ? (
+            <>
+              <div
+                onClick={() => {
+                  authStatus
+                    ? deleteFromLikedVideos(
+                        currentVideo,
+                        featureDispatch,
+                        authToken
+                      )
+                    : navigate("/login");
+                }}
+                className="flex_r cursor-pointer"
+              >
+                <i className="fa-solid fa-thumbs-down"></i>
+                <p>Dislike</p>
+              </div>
+            </>
+          ) : (
+            <>
+              <div
+                onClick={() => {
+                  authStatus
+                    ? addToLikedVideos(currentVideo, featureDispatch, authToken)
+                    : navigate("/login");
+                }}
+                className="flex_r cursor-pointer"
+              >
+                <i className="fa-solid fa-thumbs-up"></i>
+                <p>Like</p>
+              </div>
+            </>
+          )}
+
+          <div
+            onClick={() =>
+              authStatus ? (setModal(!modal)) : navigate("/login")
+            }
+            className="flex_r cursor-pointer"
+          >
+            <i className="fa-solid fa-list-check fa-lg"></i>
+            <p>Add to Playlist</p>
+          </div>
+          {watchLaterVideos.find((vid) => vid._id === currentVideo._id) ? (
+            <div
+              style={{ color: "var(--crimson-red)" }}
+              onClick={() =>
+                deleteFromWatchLater(currentVideo, featureDispatch, authToken)
+              }
+              className="flex_r cursor-pointer"
+            >
+              <i className="fa-regular fa-clock fa-lg"></i>
+              <p>Remove from Watch Later</p>
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                authStatus
+                  ? addToWatchLater(currentVideo, featureDispatch, authToken)
+                  : navigate("/login");
+              }}
+              className="flex_r cursor-pointer"
+            >
+              <i className="fa-regular fa-clock fa-lg"></i>
+              <p>Add to Watch Later</p>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="video-description">
+        <p>{description}</p>
+      </div>
+      {modal && (
+        <>
+          <div className="playlist-overlay">
+            <PlayListModal />
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export const HistoryPageCard = ({ video }) => {
+  const { auth } = useAuth();
+  const { authToken } = auth;
+  const { featureDispatch } = useFeatures();
+  const { _id, title } = video;
+  const [modalActive, setModalActive] = useState(false);
+  const navigate = useNavigate();
+  return (
+    <div key={_id} className="videolisting-cards">
+      <img
+        onClick={() => {
+          featureDispatch({ type: "SET_VIDEO", payload: video });
+          addVideoToHistory(video, featureDispatch, authToken);
+          navigate(`/video/${_id}`);
+        }}
+        className="videolisting_img"
+        src="https://i.ytimg.com/vi/f013dR_y7DI/hqdefault.jpg?s…RUAAIhCGAE=&rs=AOn4CLCmmUMogcnMu2KFfSuEnC-AN0plmw"
+        alt="error"
+      />
+      <span className="videolisting-content">
+        <p className="flex_r flex1">{title}</p>
+        <i
+          onClick={() => {
+            modalActive ? setModalActive(false) : setModalActive(true);
+          }}
+          className="fa-solid fa-xl fa-ellipsis-vertical kebab-menu"
+        ></i>
+      </span>
+      {modalActive && (
+        <div className="modal flex_c">
+          <div
+            onClick={() => {
+              deleteVideoFromHistory(video, featureDispatch, authToken);
+            }}
+            className="modalText flex_r"
+          >
+            <i
+              style={{ color: "var(--crimson-red" }}
+              className="fa-solid fa-trash-can"
+            ></i>
+            <p>Remove from History</p>
           </div>
         </div>
       )}
