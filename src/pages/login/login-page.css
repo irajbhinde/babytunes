@@ -1,0 +1,100 @@
+.login-container{
+    grid-area: login-container;
+}
+
+.login-page-wrapper {
+    font-size: 2rem;
+    font-family: "Roboto", sans-serif;
+    color: var(--white-textcolor);
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    grid-template-rows: 5.6rem 5.6rem 1fr;
+    width: 100%;
+    height: 100vh;
+    grid-template-areas:
+      "nav nav nav"
+      "sidebar chips chips"
+      "sidebar login-container login-container"
+      "sidebar login-container login-container";
+  }
+
+  .remember-me-checkbox{
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input[type="checkbox"]{
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .login-container{
+    font-size: 1.6rem;
+    margin-top: 2rem;
+    color: var(--login-purple);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 64rem;
+    height: 48rem;
+    margin: 0 auto;
+    background-color: var(--nav-bg);
+    border: 1px solid var(--login-purple);
+    border-radius: 5px;
+    gap: 2rem;
+}
+
+.login-title{
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+label input{
+    width: 37rem;
+    height: 2.5rem;
+}
+
+input{
+    color: black;
+    border: none;
+    outline: none;
+}
+
+input[type = "text"]:focus,input[type = "password"]:focus, input[type = "email"]:focus {
+    outline: 2px solid var(--login-purple);
+  }
+
+label p {
+    display: flex;
+}
+
+.input-container{
+   align-items: center;
+   justify-content: space-between;
+   width: 37rem;
+   height: 2.5rem;
+}
+
+.login-btn, .btn-guestLogin{
+    color: var(--nav-bg);
+    font-size: 1.8rem;
+    background-color: var(--login-purple);
+    width: 37rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+.btn-guestLogin{
+    background-color: #908988;
+}
+
+.input-password{
+    position: relative;
+}
