@@ -1,29 +1,40 @@
-import "./sidebar.css"
-import "../../Utils/styles.css"
+import "./sidebar.css";
+import "../../Utils/styles.css";
+import { Link } from "react-router-dom";
 
-export default function Sidebar(){
-    return(
-        <aside class="side-bar">
+export default function Sidebar() {
+  return (
+    <aside className="side-bar">
+      <Link to="/">
         <div>
-          <i class="fa-solid fa-house fa-lg"></i>
+          <i className="fa-solid fa-house fa-lg"></i>
           <span>Home</span>
         </div>
+      </Link>
+      <Link to="/likedvideos">
         <div>
-          <i class="fa-solid fa-heart fa-lg"></i>
+          <i className="fa-solid fa-heart fa-lg"></i>
           <span>Liked Videos</span>
         </div>
+      </Link>
+      <Link to="/playlist">
         <div>
-          <i class="fa-solid fa-list-check fa-lg"></i>
+          <i className="fa-solid fa-list-check fa-lg"></i>
           <span>Playlist</span>
         </div>
+      </Link>
+      <Link to="/history">
         <div>
-          <i class="fa-solid fa-clock-rotate-left fa-lg"></i>
+          <i className="fa-solid fa-clock-rotate-left fa-lg"></i>
           <span>History</span>
         </div>
+      </Link>
+      <Link to="/watchlater">
         <div>
-          <i class="fa-regular fa-clock fa-lg"></i>
+          <i className="fa-regular fa-clock fa-lg"></i>
           <span>Watch Later</span>
         </div>
-      </aside>
-    )
+      </Link>
+    </aside>
+  );
 }

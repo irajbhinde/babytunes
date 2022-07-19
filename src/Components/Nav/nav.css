@@ -6,9 +6,9 @@
 
 .avatar {
   margin-right: 3rem;
-  width: 4.125rem;
-  height: 4.125rem;
   cursor: pointer;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-bar {

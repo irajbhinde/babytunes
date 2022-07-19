@@ -92,15 +92,127 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  position: relative;
 }
 
-.videolisting-content{
-  font-size: 1.6rem ;
+.videolisting-content {
+  font-size: 1.6rem;
   padding-top: 1rem;
   display: flex;
+  gap: 0.5rem;
 }
 
-.kebab-menu{
+.kebab-menu {
   display: flex;
   align-items: center;
+}
+
+.modal {
+  font-size: 1.6rem;
+  position: absolute;
+  right: 0rem;
+  top: 105%;
+  z-index: 2;
+  color: white;
+  width: 26rem;
+  height: max-content;
+  background-color: var(--modal-bg);
+}
+
+.modal div {
+  background-color: var(--modal-bg);
+  cursor: pointer;
+  font-size: 1.6rem;
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 1rem;
+}
+
+.modal div:hover {
+  background-color: var(--hover-graybg);
+}
+
+.playlist-card {
+  position: relative;
+  margin-top: 2rem;
+  width: 30rem;
+  height: 17.2rem;
+  background-color: var(--nav-bg);
+}
+
+.playlist-card-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--hover-graybg);
+  width: 25%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlist-card-footer {
+  gap: 1rem;
+  width: 75%;
+  height: 82%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-content {
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+  gap: 2rem;
+}
+
+.deletePlaylist {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 11%;
+  height: 98%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: var(--crimson-red);
+}
+
+.videoDescription-container {
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+
+.video-features{
+  justify-content: space-between;
+  border-bottom: 2px solid var(--hover-graybg);
+  padding-bottom: 1rem;
+}
+
+.video-functions{
+  gap: 2rem !important; 
+}
+
+.video-features div{
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+.video-container{
+  gap: 1rem;
+}
+
+.video-description{
+  font-size: 1.6rem;
+  max-width: 120rem;
+}
+
+.video-creator{
+  color: var(--gray-text);
 }
