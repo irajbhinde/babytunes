@@ -1,19 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { videos } from "../../backend/db/videos";
-import {
-  Chips,
-  Nav,
-  Sidebar,
-  VideoListingCard,
-  PlayListModal,
-} from "../../Components";
+import { Chips, Nav, Sidebar, VideoListingCard } from "../../Components";
 import { useVideo } from "../../Components/context/video-context";
 import "./video-listing-page.css";
 import { getFilteredData } from "../../Utils/getFilteredData";
 
 export default function VideoListingPage() {
-  const { modal, setModal } = useVideo();
   const {
     videoState: { categories },
   } = useVideo();
@@ -33,13 +25,6 @@ export default function VideoListingPage() {
   return (
     <>
       <div className="videolisting-page-wrapper">
-        {modal && (
-          <>
-            <div className="playlist-overlay">
-              <PlayListModal />
-            </div>
-          </>
-        )}
         <Nav />
         <Sidebar />
         <Chips />

@@ -67,7 +67,7 @@ input{
     outline: none;
 }
 
-input[type = "text"]:focus,input[type = "password"]:focus, input[type = "email"]:focus {
+.login-container [type = "text"]:focus, .login-container input[type = "password"]:focus, input[type = "email"]:focus, .signup-container [type = "text"]:focus, .signup-container input[type = "password"]:focus, input[type = "email"]:focus {
     outline: 2px solid var(--login-purple);
   }
 

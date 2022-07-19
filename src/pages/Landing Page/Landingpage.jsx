@@ -1,9 +1,9 @@
 import {
   CategoryCard,
-  MustWatchCards,
   Nav,
   PlayListModal,
   Sidebar,
+  VideoListingCard,
 } from "../../Components";
 import { categories } from "../../backend/db/categories";
 import "./landingPage.css";
@@ -12,7 +12,7 @@ import { useVideo } from "../../Components/context/video-context";
 import { videos } from "../../backend/db/videos";
 export default function Landingpage() {
   const { videoDispatch } = useVideo();
-  const { modal, setModal } = useVideo();
+  const { modal } = useVideo();
 
   const navigationByCategory = (categoryName) => {
     videoDispatch({ type: "CLEAR_ALL" });
@@ -24,7 +24,7 @@ export default function Landingpage() {
         {modal && (
           <>
             <div className="playlist-overlay">
-              <PlayListModal />
+              <PlayListModal videos={videos} key={videos._id} />
             </div>
           </>
         )}
@@ -46,7 +46,7 @@ export default function Landingpage() {
               {videos.map(
                 (video) =>
                   video.bottom && (
-                    <MustWatchCards video={video} key={video._id} />
+                    <VideoListingCard video={video} key={video._id} />
                   )
               )}
             </div>

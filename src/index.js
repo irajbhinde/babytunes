@@ -4,21 +4,26 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { VideoProvider, AuthProvider } from "../src/Components/context/index";
-
+import {
+  VideoProvider,
+  AuthProvider,
+  FeatureProvider,
+} from "../src/Components/context/index";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
-      <VideoProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </VideoProvider>
-    </AuthProvider>
+    <FeatureProvider>
+      <AuthProvider>
+        <VideoProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </VideoProvider>
+      </AuthProvider>
+    </FeatureProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

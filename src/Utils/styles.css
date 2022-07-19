@@ -23,6 +23,7 @@ html {
   --white-textcolor: hsl(0deg 0% 96%);
   --crimson-red: #dc143c;
   --login-purple: #A579E8;
+  --modal-bg : #202020
 }
 
 .flex_r {
