@@ -115,8 +115,15 @@ export const VideoListingCard = ({ video }) => {
         )}
         {modal && (
           <>
-            <div className="playlist-overlay">
-              <PlayListModal video={video} key={video._id} />
+            <div 
+            onClick={(e) => {
+              if(e.target.className === "playlist-overlay"){
+                setModal(false)
+              }
+            }}
+            className="playlist-overlay">
+              <PlayListModal 
+              video={video} key={video._id} />
             </div>
           </>
         )}
