@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   width: 64rem;
-  height: 56rem;
+  height: 59rem;
   margin: 0 auto;
   background-color: var(--nav-bg);
   border: 1px solid var(--login-purple);
@@ -33,8 +33,7 @@
 }
 
 .signup-title {
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .signup-password,
@@ -48,8 +47,7 @@
   right: 1rem;
 }
 
-.btn-createAccount {
-  margin-top: 1rem;
+.btn-createAccount, .btn-autoFill {
   color: var(--nav-bg);
   font-size: 1.8rem;
   background-color: var(--login-purple);
